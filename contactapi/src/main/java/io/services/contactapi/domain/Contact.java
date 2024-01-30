@@ -1,11 +1,33 @@
 package io.services.contactapi.domain;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.hibernate.annotations.UuidGenerator;
+
 /**
  * @author AshwinAnand868
  * @version 1.0
  * @since 01/25/2024 (MM/dd/yyyy)
+ * @email anandashwin868@gmail.com
  */
+@Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@JsonInclude(JsonInclude.Include.NON_DEFAULT)
+@Table(name = "contacts")
 public class Contact {
+    @Id
+    @UuidGenerator
+    @Column(name = "id", unique = true, updatable = false)
     private String id;
     private String name;
     private String email;
@@ -14,6 +36,4 @@ public class Contact {
     private String address;
     private String status;
     private String photoUrl;
-
-
 }
